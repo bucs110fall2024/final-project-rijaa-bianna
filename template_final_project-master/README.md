@@ -1,18 +1,18 @@
 
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 
-# << Project Title >>
-## CS110 Final Project  << Semester, Year >>
+# A Week with Kana
+## CS110 Final Project  Fall, 2024
 
 ## Team Members
 
-<< List team member names >>
+Rijaa Zaidi & Bianna Chen
 
 ***
 
 ## Project Description
 
-<< Give an overview of your project >>
+A game where the player is given one in game week to collect recipies to feed their pet cat.
 
 ***    
 
@@ -30,11 +30,11 @@
 
 ### Features
 
-1. << Feature 1 >>
-2. << Feature 2 >>
-3. << Feature 3 >>
-4. << Feature 4 >>
-5. << Feature 5 >>
+1. Moving Character
+2. NPCS with text
+3. Moving between different areas
+4. Being able to exit the game
+5. Being able to press keys to interact
 
 ### Classes
 
