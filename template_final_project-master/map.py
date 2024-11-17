@@ -7,4 +7,7 @@ class Map():
         self.forest = False
         self.butchery = False
         self.bubbysHouse = False
-        
+    
+    def fullmap(x = False):
+        if self.fullmap == 
+    

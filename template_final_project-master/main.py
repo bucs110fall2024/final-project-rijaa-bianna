@@ -1,8 +1,10 @@
 import pygame
+import map
 #import your controller
 
 def main():
     pygame.init()
+    
     #Create an instance on your controller object
     #Call your mainloop
     
