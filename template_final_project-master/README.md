@@ -48,4 +48,5 @@ A game where the player is given one in game week to collect recipies to feed th
 |  2                   | click count button   | display changes to count = 1      |
 etc...
 
+Hi Bianna :]
 Hey Rijaa :p
