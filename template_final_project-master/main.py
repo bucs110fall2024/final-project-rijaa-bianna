@@ -1,9 +1,16 @@
 import pygame
-import map
 #import your controller
 
 def main():
     pygame.init()
+    screen_width = 800
+    screen_height = 600
+    screen = pygame.display.set_mode((screen_width, screen_height))
+    
+    run = True
+    while run: #Pygame automatically exits onces its done with the program. This keep pygame running
+        for event in pygame.event.get():
+            
     
     #Create an instance on your controller object
     #Call your mainloop
