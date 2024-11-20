@@ -12,8 +12,8 @@ def main():
     run = True
     while run: #Pygame automatically exits onces its done with the program. This keep pygame running
         for event in pygame.event.get():
-    
-    mycontroller = controller.Controller()
+            pass
+    mycontroller = Controller()
     
     #Create an instance on your controller object
     #Call your mainloop

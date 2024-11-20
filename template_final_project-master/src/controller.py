@@ -3,9 +3,6 @@ class Controller:
   
   def __init__(self):
     #setup pygame data
-<<<<<<< HEAD
-  
-=======
     pygame.init()
     pygame.event.pump()
     self.screen = pygame.display.set_mode()
@@ -13,12 +10,10 @@ class Controller:
     self.inventory =[]
     self.npc = []
     
-    
->>>>>>> 67c4b1ffd930074e27bf41e6df46610b78aef095
   def mainloop(self):
     #select state loop
     for event in pygame.events.get():
-    
+      pass
   
   ### below are some sample loop states ###
 
