@@ -4,6 +4,9 @@ from src.controller import Controller
 #import your controller
 
 def main():
+    thecontroller = Controller()
+    thecontroller.mainloop()
+    '''
     pygame.init()
     screen_width = 800
     screen_height = 600
@@ -14,6 +17,7 @@ def main():
         for event in pygame.event.get():
             pass
     mycontroller = Controller()
+    '''
     
     #Create an instance on your controller object
     #Call your mainloop

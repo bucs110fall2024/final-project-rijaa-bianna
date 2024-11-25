@@ -1,3 +1,5 @@
+import pygame
+from src.kana import Kana
 
 class Controller:
   
@@ -6,19 +8,26 @@ class Controller:
     pygame.init()
     pygame.event.pump()
     self.screen = pygame.display.set_mode()
-    self.kana = Kana()
+    self.background = pygame.image.load("assets/map.jpeg")
+    
+    #self.kana = Kana() Put image in parathese
     self.inventory =[]
     self.npc = []
     
   def mainloop(self):
     #select state loop
-    for event in pygame.events.get():
-      pass
+    run = True
+    while run:
+      for event in pygame.event.get():
+        pass
+      
+      self.screen.blit(self.background, (0,0))
+      pygame.display.flip() #RESIZE USING TRANSFORM
   
   ### below are some sample loop states ###
 
   def menuloop(self):
-    
+      pass
       #event loop
 
       #update data
@@ -26,6 +35,7 @@ class Controller:
       #redraw
       
   def gameloop(self):
+    pass
       #event loop
 
       #update data
@@ -33,6 +43,7 @@ class Controller:
       #redraw
     
   def gameoverloop(self):
+    pass
       #event loop
 
       #update data
