@@ -4,7 +4,7 @@ class Kana(pygame.sprite.Sprite):
     def __init__(self, img):
         super().__init__()
         
-        self.img= pygame.image.load()
+        self.img= pygame.image.load("")
         self.rect = self.img.get_rect()
         self.rect.x = 0
         self.rect.y = 0
