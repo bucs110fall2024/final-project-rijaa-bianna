@@ -13,7 +13,7 @@ class Controller:
     self.background = pygame.transform.scale(self.background, self.screen.get_size())
     
     #textbox
-    self.textbox = pygame.display.set_mode((1200, 50))
+    self.textbox = pygame.display.set_mode()
     # Fill background
     self.box = pygame.Surface(self.textbox.get_size())
     self.box = self.textbox.convert()
