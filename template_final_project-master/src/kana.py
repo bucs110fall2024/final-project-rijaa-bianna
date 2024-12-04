@@ -1,15 +1,17 @@
 import pygame
 
 class Kana(pygame.sprite.Sprite):
-    def __init__(self, img):
+    def __init__(self):
         super().__init__()
-        
-        self.img= pygame.image.load("")
+        '''
+        initializes kana player image
+        '''
+        self.img= pygame.image.load("template_final_project-master/assets/characters/kanaclose.png").convert_alpha()
+        self.img = pygame.transform.scale(self.img, (60,60))
         self.rect = self.img.get_rect()
         self.rect.x = 0
         self.rect.y = 0
         self.speed = 1
-    
     def move_up(self):
         self.rect.y -= self.speed
 

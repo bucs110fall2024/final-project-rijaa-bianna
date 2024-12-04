@@ -13,7 +13,10 @@ class View:
       
         
         pygame.display.flip() #doesnn't display anything until the program internally loads everything (displays eveyrthing at once). Call it only once every frame
-    
+    def render_place(self, img):
+        self.display = pygame.image.blit(img)
+        
+        
     def events(self):
         return pygame.event.get() #Makes events, need it for the for loop to check if player made a keyboard commad\
     
