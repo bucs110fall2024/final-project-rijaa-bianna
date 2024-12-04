@@ -51,7 +51,7 @@ class Controller:
     while run:
       # Blit everything to the screen
       if self.start_game == True:
-        self.textbox.blit(self.box, (600, 300))
+        self.textbox.blit(self.box, (0, 0))
         pygame.display.flip()
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
