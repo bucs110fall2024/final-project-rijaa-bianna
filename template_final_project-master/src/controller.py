@@ -12,6 +12,23 @@ class Controller:
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
     self.background = pygame.transform.scale(self.background, self.screen.get_size())
     
+    #textbox
+    self.textbox = pygame.display.set_mode((1200, 50))
+    # Fill background
+    self.box = pygame.Surface(self.textbox.get_size())
+    self.box = self.textbox.convert()
+    self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
+    self.start_game = True
+
+    # Display some text
+    self.font = pygame.font.Font(None, 36)
+    text = self.font.render("Hello there, my name is Kana. Help me collect food to feed my cat. Press space to continue", 1, (10, 10, 10))
+    textpos = text.get_rect()
+    textpos.centerx = self.box.get_rect().centerx
+    self.box.blit(text, textpos)
+
+    
+    
   
     self.myhome = Home()
     self.kana = Kana()
@@ -32,7 +49,10 @@ class Controller:
     #select state loop
     run = True
     while run:
-      
+      # Blit everything to the screen
+      if self.start_game == True:
+        self.textbox.blit(self.box, (600, 300))
+        pygame.display.flip()
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           print("quit")
@@ -40,11 +60,23 @@ class Controller:
         if event.type == pygame.KEYDOWN: #Checks that whether a key is pressed.
           if event.key == pygame.K_SPACE: # renders new area if spacebar is pressed
             self.show_player = True 
+            self.start_game = False # displays our food and stops displaying the texbox
           if event.key == pygame.K_q: # renders new area if spacebar is pressed
             self.show_player = False 
-      
+          if event.key == pygame.K_DOWN:
+            self.kana.move_down()
+            
+          if event.key == pygame.K_UP:
+            self.kana.move_up()
+            
+          if event.key == pygame.K_LEFT:
+            self.kana.move_left()
+            
+          if event.key == pygame.K_RIGHT:
+            self.kana.move_right()
+    
       if self.show_player == True:  
-        self.screen.blit(self.kana.img, (0,0))
+        self.screen.blit(self.kana.img, self.kana.rect)
       else:
         self.render_main() 
         

@@ -3,7 +3,6 @@ import sys
 class View:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode()
         self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
         self.background = pygame.transform.scale(self.background, self.screen.get_size())
         

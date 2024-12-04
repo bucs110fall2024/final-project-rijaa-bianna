@@ -11,7 +11,8 @@ class Kana(pygame.sprite.Sprite):
         self.rect = self.img.get_rect()
         self.rect.x = 0
         self.rect.y = 0
-        self.speed = 1
+        self.speed = 100
+
     def move_up(self):
         self.rect.y -= self.speed
 
