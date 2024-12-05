@@ -14,11 +14,13 @@ class Controller:
     self.background = pygame.transform.scale(self.background, self.dimensions)
     
     #variables to control what shows on the screen
+    self.count = 0
     self.show_player = False
     self.show_textbox = True # start game controls the textbox display
     self.show_friedrice = False
     self.show_pizza = False
     self.show_cookie = False
+    self.show_lassi = False
     
     #textbox
     self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
@@ -36,7 +38,7 @@ class Controller:
     #Put food here
     self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
     self.pizza = Food("template_final_project-master/assets/pizza.png", self.dimensions[0], self.dimensions[1])
-    #self.lassi = Food("template_final_project-master/assets/lassi.png", self.dimensions[0], self.dimensions[1])
+    self.lassi = Food("template_final_project-master/assets/lassi.png", self.dimensions[0], self.dimensions[1])
     self.cookie = Food("template_final_project-master/assets/cookie.png", self.dimensions[0], self.dimensions[1])
     
     #food group
@@ -46,8 +48,8 @@ class Controller:
     self.pizza_sprite = pygame.sprite.Group()
     self.pizza_sprite.add(self.pizza)
     
-    #self.lassi_sprite = pygame.sprite.Group()
-    #self.lassi_sprite.add(self.lassi)
+    self.lassi_sprite = pygame.sprite.Group()
+    self.lassi_sprite.add(self.lassi)
     
     self.cookie_sprite = pygame.sprite.Group()
     self.cookie_sprite.add(self.cookie)
@@ -72,14 +74,19 @@ class Controller:
   def check_collisions_friedrice(self):
     if pygame.sprite.spritecollide(self.kana, self.friedrice_sprite, True):
       self.show_friedrice = False
-    """ ^^ Makes the blitted image of kanaclose.png a actual sprite in the system. This is to ensure that the collision tool can happen."""
+      self.count += 1
   def check_collisions_pizza(self):
     if pygame.sprite.spritecollide(self.kana, self.pizza_sprite, True):
       self.show_pizza = False
-      """ ^^ Makes the blitted image of pizza a actual sprite in the system. This is to ensure that the collision tool can happen."""
+      self.count += 1
+  def check_collisions_lassi(self):
+    if pygame.sprite.spritecollide(self.kana, self.lassi_sprite, True):
+      self.show_lassi = False
+      self.count += 1
   def check_collisions_cookie(self):
     if pygame.sprite.spritecollide(self.kana, self.cookie_sprite, True):
       self.show_cookie = False
+      self.count += 1
   
 
       
@@ -103,6 +110,7 @@ class Controller:
             self.show_textbox = False #stops displaying the texbox
             self.show_friedrice = True
             self.show_pizza = True
+            self.show_lassi = True
             self.show_cookie = True
           if event.key == pygame.K_q: # renders new area if spacebar is pressed
             self.show_player = False 
@@ -122,6 +130,7 @@ class Controller:
         self.screen.blit(self.kana.img, self.kana.rect)
         self.check_collisions_friedrice()
         self.check_collisions_pizza()
+        self.check_collisions_lassi()
         self.check_collisions_cookie()
       
       if self.show_friedrice == True:
@@ -129,9 +138,15 @@ class Controller:
     
       if self.show_pizza == True:
         self.screen.blit(self.pizza.img, self.pizza.rect)
+      
+      if self.show_lassi == True:
+        self.screen.blit(self.lassi.img, self.lassi.rect)
         
       if self.show_cookie == True:
         self.screen.blit(self.cookie.img, self.cookie.rect)
+      
+      if self.count == 4:
+        pass
     
         
     
