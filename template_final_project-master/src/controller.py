@@ -1,6 +1,6 @@
 import sys
 import pygame
-from src.home import Home
+#from src.food import Food
 from src.kana import Kana
 
 class Controller:
@@ -9,14 +9,14 @@ class Controller:
     #setup pygame data
     pygame.init()
     self.screen = pygame.display.set_mode()
+    self.dimensions = self.screen.get_size() #so we can check the dimensions of a given screen, replaced screen.get_size instances with this
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
-    self.background = pygame.transform.scale(self.background, self.screen.get_size())
+    self.background = pygame.transform.scale(self.background, self.dimensions)
     
     #textbox
-    self.textbox = pygame.display.set_mode((1200, 50))
     # Fill background
-    self.box = pygame.Surface(self.textbox.get_size())
-    self.box = self.textbox.convert()
+    self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 1000 ))
+    self.box = self.box.convert()
     self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
     self.start_game = True
 
@@ -30,7 +30,7 @@ class Controller:
     
     
   
-    self.myhome = Home()
+    
     self.kana = Kana()
     self.show_player = False
     #self.kana = Kana() Put image in parathese
@@ -51,7 +51,7 @@ class Controller:
     while run:
       # Blit everything to the screen
       if self.start_game == True:
-        self.textbox.blit(self.box, (0, 0))
+        self.screen.blit(self.box, (0, 0))
         pygame.display.flip()
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
