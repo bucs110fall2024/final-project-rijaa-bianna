@@ -15,12 +15,15 @@ class Controller:
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
     self.background = pygame.transform.scale(self.background, self.dimensions)
     
+    #variables to control what shows on the screen
+    self.show_player = False
+    self.show_textbox = True # start game controls the textbox display
+    self.show_food = False
+    
     #textbox
-
     self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
     self.box = self.box.convert()
     self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
-    self.start_game = True
 
     # Display some text
     self.font = pygame.font.Font(None, 36)
@@ -42,15 +45,8 @@ class Controller:
     self.collect.add(self.pizza)
     #self.collect.add(self.lassi)
     self.collect.add(self.cookie)
-
-    
-    
-  
     
     self.kana = Kana()
-    self.show_player = False
-    self.inventory =[]
-    self.npc = []
   
   def render_main(self):
       self.screen.fill((0,0,0))
@@ -62,7 +58,7 @@ class Controller:
   
   def check_collisions(self):
     if pygame.sprite.spritecollide(self.kana, self.collect, True):
-      self.start_game = True
+      self.show_textbox = True
       print(len(self.collect))
       
   
@@ -73,17 +69,20 @@ class Controller:
     run = True
     while run:
       # Blit everything to the screen
-      if self.start_game == True:
+      if self.show_textbox == True:
         self.screen.blit(self.box, (0, 0))
         pygame.display.flip()
+        
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
           print("quit")
           self.quit()
+          
         if event.type == pygame.KEYDOWN: #Checks that whether a key is pressed.
           if event.key == pygame.K_SPACE: # renders new area if spacebar is pressed
             self.show_player = True 
-            self.start_game = False # displays our food and stops displaying the texbox
+            self.show_textbox = False #stops displaying the texbox
+            self.show_food = True
           if event.key == pygame.K_q: # renders new area if spacebar is pressed
             self.show_player = False 
           if event.key == pygame.K_DOWN:
@@ -102,7 +101,7 @@ class Controller:
         self.screen.blit(self.kana.img, self.kana.rect)
         self.check_collisions()
       
-      if self.start_game == False: 
+      if self.show_food == True: 
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
         
         self.screen.blit(self.pizza.img, self.pizza.rect)
