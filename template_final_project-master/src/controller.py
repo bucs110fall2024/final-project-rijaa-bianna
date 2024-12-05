@@ -32,6 +32,19 @@ class Controller:
 
     #Put food here
     self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
+    self.pizza = Food("template_final_project-master/assets/pizza.png", self.dimensions[0], self.dimensions[1])
+    self.lassi = Food("template_final_project-master/assets/lassi.png", self.dimensions[0], self.dimensions[1])
+    self.cookie = Food("template_final_project-master/assets/cookie.png", self.dimensions[0], self.dimensions[1])
+    
+    #food group
+    self.collect = pygame.sprite.Group()
+    self.collect.add(self.friedrice)
+    self.collect.add(self.pizza)
+    self.collect.add(self.lassi)
+    self.collect.add(self.cookie)
+
+    
+    
   
     
     self.kana = Kana()
