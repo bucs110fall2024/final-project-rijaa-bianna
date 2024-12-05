@@ -60,6 +60,11 @@ class Controller:
         pygame.quit()
         sys.exit()
   
+  def check_collisions(self):
+    if pygame.sprite.spritecollide(self.kana, self.collect, True):
+      print(len(self.collect))
+      
+  
 
       
   def mainloop(self):
@@ -93,10 +98,11 @@ class Controller:
             self.kana.move_right()
       self.render_main() 
       if self.show_player == True:  
-        self.screen.blit(self.kana.img, self.kana.rect)
+        self.screen.blit(self.kana.img, self.kana.rect) 
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
         self.screen.blit(self.pizza.img, self.pizza.rect)
         self.screen.blit(self.cookie.img, self.cookie.rect)
+        self.check_collisions()
     
         
       pygame.display.flip()
