@@ -78,13 +78,11 @@ class Controller:
             
           if event.key == pygame.K_RIGHT:
             self.kana.move_right()
-      print("here 2")
       self.render_main() 
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
         
-      print("here 3")
       pygame.display.flip()
 
 
