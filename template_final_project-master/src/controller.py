@@ -58,7 +58,6 @@ class Controller:
   
   def check_collisions(self):
     if pygame.sprite.spritecollide(self.kana, self.collect, True):
-      self.show_textbox = True
       print(len(self.collect))
       
   
@@ -99,13 +98,12 @@ class Controller:
       self.render_main() 
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
+        self.collect.draw(self.background, self.screen)
         self.check_collisions()
       
-      if self.show_food == True: 
-        self.screen.blit(self.friedrice.img, self.friedrice.rect)
-        
-        self.screen.blit(self.pizza.img, self.pizza.rect)
-        self.screen.blit(self.cookie.img, self.cookie.rect)
+      # self.screen.blit(self.friedrice.img, self.friedrice.rect) 
+      # self.screen.blit(self.pizza.img, self.pizza.rect)
+      # self.screen.blit(self.cookie.img, self.cookie.rect)
         
     
         
