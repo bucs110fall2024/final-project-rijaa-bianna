@@ -9,18 +9,14 @@ class Controller:
     #setup pygame data
     pygame.init()
 
+
     self.screen = pygame.display.set_mode()
     self.dimensions = self.screen.get_size() #so we can check the dimensions of a given screen, replaced screen.get_size instances with this
-    self.screen = pygame.display.set_mode((400,400))
-
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
     self.background = pygame.transform.scale(self.background, self.dimensions)
     
     #textbox
 
-
-
-    # Fill background
     self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 1000 ))
     self.box = self.box.convert()
     self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
@@ -35,13 +31,11 @@ class Controller:
 
 
     #Put food here
-    self.width, self.height = self.screen.get_size()
-    self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.width,self.height)   
-  
+    self.friedrice = Food("template_final_project-master/assets/friedrice.png", )
+    
     
     self.kana = Kana()
     self.show_player = False
-    #self.kana = Kana() Put image in parathese
     self.inventory =[]
     self.npc = []
   
