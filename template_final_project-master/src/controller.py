@@ -73,7 +73,7 @@ class Controller:
       self.show_pizza = False
   def check_collisions_cookie(self):
     if pygame.sprite.spritecollide(self.kana, self.cookie_sprite, True):
-      self.show_sprite = False
+      self.show_cookie = False
   
 
       
