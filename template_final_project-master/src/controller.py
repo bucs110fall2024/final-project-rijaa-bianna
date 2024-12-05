@@ -31,8 +31,8 @@ class Controller:
 
 
     #Put food here
-    self.friedrice = Food("template_final_project-master/assets/friedrice.png", )
-    
+    self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
+  
     
     self.kana = Kana()
     self.show_player = False
@@ -50,7 +50,6 @@ class Controller:
 
       
   def mainloop(self):
-    print(self.x,self.y)
     #select state loop
     run = True
     while run:
