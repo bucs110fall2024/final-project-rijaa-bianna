@@ -8,8 +8,6 @@ class Controller:
   def __init__(self):
     #setup pygame data
     pygame.init()
-
-
     self.screen = pygame.display.set_mode()
     self.dimensions = self.screen.get_size() #so we can check the dimensions of a given screen, replaced screen.get_size instances with this
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
@@ -61,10 +59,16 @@ class Controller:
   def render_main(self):
       self.screen.fill((0,0,0))
       self.screen.blit(self.background, (0,0)) #Draws one surface on top of another surface
+      """
+      ^^^ renders map.jpeg
+      """
         
   def quit(self): #code to quit the program. Command c on the terminal works too I think
         pygame.quit()
         sys.exit()
+        ''' 
+        ^^ lets the program quit
+        '''
   
   #Mathods for each collison that Kana makes with a food object
   def check_collisions_friedrice(self):
@@ -96,11 +100,11 @@ class Controller:
         pygame.display.flip()
         
       for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-          print("quit")
-          self.quit()
           
         if event.type == pygame.KEYDOWN: #Checks that whether a key is pressed.
+          if event.type == pygame.K_q: #quits the game
+            print("quit")
+            self.quit()
           if event.key == pygame.K_SPACE: # renders new area if spacebar is pressed
             self.show_player = True 
             self.show_textbox = False #stops displaying the texbox
