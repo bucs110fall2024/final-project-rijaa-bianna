@@ -1,4 +1,5 @@
 import pygame
+from src.food import Food
 
 class Kana(pygame.sprite.Sprite):
     def __init__(self):
@@ -12,6 +13,7 @@ class Kana(pygame.sprite.Sprite):
         self.rect.x = 0
         self.rect.y = 0
         self.speed = 100
+    
 
     def move_up(self):
         self.rect.y -= self.speed
