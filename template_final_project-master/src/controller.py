@@ -17,7 +17,7 @@ class Controller:
     
     #textbox
 
-    self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 1000 ))
+    self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
     self.box = self.box.convert()
     self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
     self.start_game = True
@@ -62,6 +62,7 @@ class Controller:
   
   def check_collisions(self):
     if pygame.sprite.spritecollide(self.kana, self.collect, True):
+      self.start_game = True
       print(len(self.collect))
       
   
@@ -98,11 +99,15 @@ class Controller:
             self.kana.move_right()
       self.render_main() 
       if self.show_player == True:  
-        self.screen.blit(self.kana.img, self.kana.rect) 
+        self.screen.blit(self.kana.img, self.kana.rect)
+        self.check_collisions()
+      
+      if self.start_game == False: 
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
+        
         self.screen.blit(self.pizza.img, self.pizza.rect)
         self.screen.blit(self.cookie.img, self.cookie.rect)
-        self.check_collisions()
+        
     
         
       pygame.display.flip()
