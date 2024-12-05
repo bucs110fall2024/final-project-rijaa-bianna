@@ -18,7 +18,9 @@ class Controller:
     #variables to control what shows on the screen
     self.show_player = False
     self.show_textbox = True # start game controls the textbox display
-    self.show_food = False
+    self.show_friedrice = False
+    self.show_pizza = False
+    self.show_cookie = False
     
     #textbox
     self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
@@ -56,8 +58,10 @@ class Controller:
         pygame.quit()
         sys.exit()
   
-  def check_collisions(self):
-    if pygame.sprite.spritecollide(self.kana, self.collect, True):
+  #Mathods for each collison that Kana makes with a food object
+  def check_collisions_friedrice(self):
+    if pygame.sprite.spritecollide(self.kana, self.friedrice, True):
+      self.show_friedrice = False
       print(len(self.collect))
       
   
@@ -81,7 +85,9 @@ class Controller:
           if event.key == pygame.K_SPACE: # renders new area if spacebar is pressed
             self.show_player = True 
             self.show_textbox = False #stops displaying the texbox
-            self.show_food = True
+            self.show_friedrice = True
+            self.show_pizza = True
+            self.show_cookie = True
           if event.key == pygame.K_q: # renders new area if spacebar is pressed
             self.show_player = False 
           if event.key == pygame.K_DOWN:
@@ -98,13 +104,17 @@ class Controller:
       self.render_main() 
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
-        self.check_collisions()
+        self.check_collisions_friedrice()
       
-      if self.show_food == True: 
+      if self.show_friedrice == True:
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
-        
+    
+      if self.show_pizza == True:
         self.screen.blit(self.pizza.img, self.pizza.rect)
+        
+      if self.show_cookie == True:
         self.screen.blit(self.cookie.img, self.cookie.rect)
+    
         
     
         
