@@ -58,7 +58,6 @@ class Controller:
   
   def check_collisions(self):
     if pygame.sprite.spritecollide(self.kana, self.collect, True):
-      self.show_textbox = True
       print(len(self.collect))
       
   
