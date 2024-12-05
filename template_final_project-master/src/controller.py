@@ -100,11 +100,11 @@ class Controller:
         pygame.display.flip()
         
       for event in pygame.event.get():
-          
+        if event.type == pygame.QUIT:
+          print("quit")
+          self.quit()
+          '''^^ Let's the program quit with clicking the X on the top'''
         if event.type == pygame.KEYDOWN: #Checks that whether a key is pressed.
-          if event.type == pygame.K_q: #quits the game
-            print("quit")
-            self.quit()
           if event.key == pygame.K_SPACE: # renders new area if spacebar is pressed
             self.show_player = True 
             self.show_textbox = False #stops displaying the texbox
@@ -112,27 +112,35 @@ class Controller:
             self.show_pizza = True
             self.show_lassi = True
             self.show_cookie = True
-          if event.key == pygame.K_q: # renders new area if spacebar is pressed
-            self.show_player = False 
+            '''^^ When Space bar is clicked, the game starts. The displays our player, Kana.
+            Furthermore, it deletes the inital textbox and displays the food items across the screen'''
+          
+          '''KEY MOVEMENTS FOR KANA, OUR PLAYER---------------------------------'''
           if event.key == pygame.K_DOWN:
             self.kana.move_down()
-            
+            '''^^ Let's Kana, our player, move down when down arrow is clicked'''
           if event.key == pygame.K_UP:
             self.kana.move_up()
-            
+            '''^^ Let's Kana, our player, move up when up arrow is clicked'''
           if event.key == pygame.K_LEFT:
             self.kana.move_left()
-            
+            '''^^ Let's Kana, our player, move left when left arrow is clicked'''
           if event.key == pygame.K_RIGHT:
             self.kana.move_right()
+            '''^^ Let's Kana, our player, move right when right arrow is clicked'''
+          """------------------------------------------------------------------"""
+          
       self.render_main() 
+      
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
         self.check_collisions_friedrice()
         self.check_collisions_pizza()
         self.check_collisions_lassi()
         self.check_collisions_cookie()
-      
+      ''' ^^ When show_player is True, it makes our player show on the screen.
+      And so, when the player moves around the screen, program constantly checks for collision
+      between Kana sprite and food sprites'''
       if self.show_friedrice == True:
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
     
