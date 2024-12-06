@@ -201,6 +201,10 @@ class Controller:
           self.screen.blit(self.tomo, self.tomo_rect)
           if self.tomo_pet == True:
             self.tomo_interact()
+            
+          self.kanaimg = pygame.image.load("template_final_project-master/assets/characters/kanaopen-removebg-preview.png")
+          self.kana_rect = self.kanaimg.get_rect()
+          self.screen.blit(self.kanaimg, (300, self.kana_rect[1]))
           
           #RiJJAA HERERRERE AHHHHHH
           
