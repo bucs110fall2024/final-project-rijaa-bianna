@@ -34,7 +34,7 @@ A game where the player collects food from the map to feed their pet cat.
 2. Randomly spawning food
 3. Text that explains your objective
 4. colliding with food deletes and internally updates score
-5. Being able to press keys to interact
+5. You can pet the cat exactly once (sprite updates from a closed mouth to an open one)
 
 ### Classes
 
@@ -46,7 +46,10 @@ A game where the player collects food from the map to feed their pet cat.
 
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
-|  1                   | Run Counter Program  |GUI window appears with count = 0  |
-|  2                   | click count button   | display changes to count = 1      |
+|  1                   | press space bar      |textbox is deleted and kana and food sprites appear  |
+|  2                   | press arrow keys   | kana moves 50 pixels in whatever direction you press      |
+|  3                  | using arrow keys, collide with any food object(pizza, fried rice, lassi, cookie)   | food object kana collided with is removed from the screen     |
+|  4                   | collide with and remove all food objects   | a new text box opens which also features images of tomo(cat) and kana      |
+|  5                   | press return key   | tomo opens it's mouth (petting the cat)      |
 etc...
 
