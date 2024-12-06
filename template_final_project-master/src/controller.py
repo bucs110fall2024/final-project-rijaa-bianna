@@ -120,6 +120,11 @@ class Controller:
     self.tomo_petted = pygame.image.load("template_final_project-master/assets/characters/tomoopen-removebg-preview.png")
     self.tomo_rect2 = self.tomo_petted.get_rect()
     self.screen.blit(self.tomo_petted, self.tomo_rect2)
+    '''
+    Triggers an interaction with Tomo, our pet, which shows up at the end of the game. 
+    arg: self
+    returns: overlaps a image of Tomo with their mouth open to show a "petting animation"
+    '''
   
   def mainloop(self):
     #select state loop
@@ -159,6 +164,8 @@ class Controller:
           
           if event.key == pygame.K_RETURN:
             self.tomo_pet = True
+            '''Triggers the tomo_pet if statment which triggers the tomo_interact method allowing a petting animation. 
+            This is for the end of the game.'''
           
       self.render_main() 
       '''^^Re-blits the map so that the old image of Kana, the player, doesn't show and only the most recent shows.
@@ -190,24 +197,32 @@ class Controller:
       
       if self.count == 4:
         self.show_textbox = True
-        
-      # Blit everything to the screen
+      '''^^When self.count == 4, as in when the player has collided with all 4 foods on the screen, run the textbox code 
+      for another texbox to pop up'''
+      
+      '''TO CONTROL THE TEXTBOX AND THINGS THAT HAPPEN WHEN THE TEXTBOX IS UP ON SCREEN ------------------------------------'''
       if self.show_textbox == True:
         self.the_textbox()
         self.screen.blit(self.box, (0, 0))
-        if self.count == 4:
+        
+        if self.count == 4: #Checking to see if the game has ended
           self.tomo = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
           self.tomo_rect = self.tomo.get_rect()
           self.screen.blit(self.tomo, self.tomo_rect)
+          '''^^^When game has ended, (when self.count == 4),tomo pops up onto the screen'''
           if self.tomo_pet == True:
             self.tomo_interact()
             pygame.time.delay(1000)
+            '''Let's you interact with Tomo, through triggering self.tomo_interact'''
             
           self.kanaimg = pygame.image.load("template_final_project-master/assets/characters/kanaopen-removebg-preview.png")
           self.kana_rect = self.kanaimg.get_rect()
           self.screen.blit(self.kanaimg, (300, self.kana_rect[1]))
-          
-          #RiJJAA HERERRERE AHHHHHH
+        '''To explain: There are two stages of our textbox. Once for the beginning of the game (when self.count = 0),
+        second, for the end (when self.count = 4). Note: self.count is the number of times kana, our player, and the food sprites have collided
+        Therefore, beginning of game and end of game is determined by this count.'''
+        '''--------------------------------------------------------------------------------------------------------------'''
+        
           
         
       pygame.display.flip() 
