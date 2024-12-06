@@ -23,20 +23,9 @@ class Controller:
     self.show_cookie = False
     self.show_lassi = False
     '''^^ These are the variables that control what shows on the screen'''
-    #textbox
-    self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
-    self.box = self.box.convert()
-    self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
-    '''^^Makes the textbox and other varibles of it, such as color and size'''
     
-    # Display some text
-    self.font = pygame.font.Font(None, 36)
-    text = self.font.render("Hello there, my name is Kana. Help me collect food to feed my cat. Press space to continue", 1, (10, 10, 10))
-    textpos = text.get_rect()
-    textpos.centerx = self.box.get_rect().centerx
-    self.box.blit(text, textpos)
-    '''^^Continuation of textbox, determining what it is going to display and blits it on the screen'''
-
+    #BOOKMARK BOOK MARK
+    
     #Put food here
     self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
     self.pizza = Food("template_final_project-master/assets/pizza.png", self.dimensions[0], self.dimensions[1])
@@ -61,6 +50,27 @@ class Controller:
     
     self.kana = Kana() 
     '''^^This makes the Kana sprite exist. Similar to the way turtle works in Turtle()'''
+  
+  def textbox_message(self):
+    if self.count == 0:
+      return(f"Hello there, my name is Kana. Help me collect food to feed my cat. Press space to continue")
+    if self.count == 4:
+      return(f"Yippee! You have collected all the foods. Thank you!")
+  
+  def the_textbox(self):
+    #textbox
+    self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
+    self.box = self.box.convert()
+    self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
+    '''^^Makes the textbox and other varibles of it, such as color and size'''
+    
+    # Display some text
+    self.font = pygame.font.Font(None, 36)
+    text = self.font.render(self.textbox_message(), 1, (10, 10, 10))
+    textpos = text.get_rect()
+    textpos.centerx = self.box.get_rect().centerx
+    self.box.blit(text, textpos)
+    '''^^Continuation of textbox, determining what it is going to display and blits it on the screen'''
   
   def render_main(self):
       self.screen.fill((0,0,0))
@@ -106,7 +116,6 @@ class Controller:
       arg: self
       return: sprite visiblity and kana-and-food-sprite collision counter goes up by one'''
   '''----------------------------------------------------------------------------------'''
-
       
   def mainloop(self):
     #select state loop
@@ -114,6 +123,7 @@ class Controller:
     while run:
       # Blit everything to the screen
       if self.show_textbox == True:
+        self.the_textbox()
         self.screen.blit(self.box, (0, 0))
         pygame.display.flip()
         
@@ -152,7 +162,7 @@ class Controller:
       '''^^Re-blits the map so that the old image of Kana, the player, doesn't show and only the most recent shows.
       Gives the illusion that Kana, our player, is moving'''
       
-      if self.show_player == True:  
+      if self.show_player == True:
         self.screen.blit(self.kana.img, self.kana.rect)
         self.check_collisions_friedrice()
         self.check_collisions_pizza()
@@ -177,7 +187,7 @@ class Controller:
       '''--------------------------------------------------------------------------------------------------------------------------------'''
       
       if self.count == 4:
-        pass
+        self.show_textbox = True
         
       pygame.display.flip() 
       '''^^^Displays the surface onto the screen at the very end of the loop'''
