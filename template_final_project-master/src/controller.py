@@ -24,8 +24,6 @@ class Controller:
     self.show_lassi = False
     '''^^ These are the variables that control what shows on the screen'''
     
-    #BOOKMARK BOOK MARK
-    
     #Put food here
     self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
     self.pizza = Food("template_final_project-master/assets/pizza.png", self.dimensions[0], self.dimensions[1])
@@ -121,11 +119,6 @@ class Controller:
     #select state loop
     run = True
     while run:
-      # Blit everything to the screen
-      if self.show_textbox == True:
-        self.the_textbox()
-        self.screen.blit(self.box, (0, 0))
-        pygame.display.flip()
         
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -188,6 +181,15 @@ class Controller:
       
       if self.count == 4:
         self.show_textbox = True
+        
+      # Blit everything to the screen
+      if self.show_textbox == True:
+        self.the_textbox()
+        self.screen.blit(self.box, (0, 0))
+        if self.count == 4:
+          self.background = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
+          #RiJJAA HERERRERE AHHHHHH
+          
         
       pygame.display.flip() 
       '''^^^Displays the surface onto the screen at the very end of the loop'''
