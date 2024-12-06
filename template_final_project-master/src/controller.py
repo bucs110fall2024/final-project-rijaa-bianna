@@ -12,6 +12,7 @@ class Controller:
     self.dimensions = self.screen.get_size() #so we can check the dimensions of a given screen, replaced screen.get_size instances with this
     self.background = pygame.image.load("template_final_project-master/assets/map.jpeg")
     self.background = pygame.transform.scale(self.background, self.dimensions)
+    '''^^This makes the inital screen of pygame'''
     
     #variables to control what shows on the screen
     self.count = 0
@@ -21,26 +22,29 @@ class Controller:
     self.show_pizza = False
     self.show_cookie = False
     self.show_lassi = False
-    
+    '''^^ These are the variables that control what shows on the screen'''
     #textbox
     self.box = pygame.Surface((self.dimensions[0] - 300, self.dimensions[1] - 100 ))
     self.box = self.box.convert()
     self.box.fill((250, 250, 250)) # these are colors, size is determined by self.texbox
-
+    '''^^Makes the textbox and other varibles of it, such as color and size'''
+    
     # Display some text
     self.font = pygame.font.Font(None, 36)
     text = self.font.render("Hello there, my name is Kana. Help me collect food to feed my cat. Press space to continue", 1, (10, 10, 10))
     textpos = text.get_rect()
     textpos.centerx = self.box.get_rect().centerx
     self.box.blit(text, textpos)
-
+    '''^^Continuation of textbox, determining what it is going to display and blits it on the screen'''
 
     #Put food here
     self.friedrice = Food("template_final_project-master/assets/friedrice.png", self.dimensions[0], self.dimensions[1])
     self.pizza = Food("template_final_project-master/assets/pizza.png", self.dimensions[0], self.dimensions[1])
     self.lassi = Food("template_final_project-master/assets/lassi.png", self.dimensions[0], self.dimensions[1])
     self.cookie = Food("template_final_project-master/assets/cookie.png", self.dimensions[0], self.dimensions[1])
+    '''This makes the food objects'''
     
+    '''MAKES THE FOOD OBJECTS INTO SPRITES SO THAT THEY HAVE THEY CAN ACCESS THE ABILITIES OF A SPRITE ON PYGAME---'''
     #food group
     self.friedrice_sprite = pygame.sprite.Group()
     self.friedrice_sprite.add(self.friedrice)
@@ -53,24 +57,31 @@ class Controller:
     
     self.cookie_sprite = pygame.sprite.Group()
     self.cookie_sprite.add(self.cookie)
+    '''-----------------------------------------------------------------------------------------------------------'''
     
-    self.kana = Kana()
+    self.kana = Kana() 
+    '''^^This makes the Kana sprite exist. Similar to the way turtle works in Turtle()'''
   
   def render_main(self):
       self.screen.fill((0,0,0))
       self.screen.blit(self.background, (0,0)) #Draws one surface on top of another surface
       """
-      ^^^ renders map.jpeg
+      renders map.jpeg
+      arg: self
+      return: shows the actual background on screen, map.jpeg
       """
         
   def quit(self): #code to quit the program. Command c on the terminal works too I think
         pygame.quit()
         sys.exit()
         ''' 
-        ^^ lets the program quit
+        lets the program quit
+        arg: self
+        return: sys.exit
         '''
   
-  #Mathods for each collison that Kana makes with a food object
+  '''CHECKS COLLISIONS FOR EACH FOOD SPRITES WITH KANA---------------------'''
+  #Methods for each collison that Kana makes with a food object
   def check_collisions_friedrice(self):
     if pygame.sprite.spritecollide(self.kana, self.friedrice_sprite, True):
       self.show_friedrice = False
@@ -87,7 +98,14 @@ class Controller:
     if pygame.sprite.spritecollide(self.kana, self.cookie_sprite, True):
       self.show_cookie = False
       self.count += 1
-  
+      
+      '''For all four methods above:
+      Checks for collisions with food sprites with Kana Sprite.
+      If the two sprites collides, the food object disappears.
+      Then, it adds a count to the amount of Kana and food collisions made.
+      arg: self
+      return: sprite visiblity and kana-and-food-sprite collision counter goes up by one'''
+  '''----------------------------------------------------------------------------------'''
 
       
   def mainloop(self):
@@ -118,19 +136,20 @@ class Controller:
           '''KEY MOVEMENTS FOR KANA, OUR PLAYER---------------------------------'''
           if event.key == pygame.K_DOWN:
             self.kana.move_down()
-            '''^^ Let's Kana, our player, move down when down arrow is clicked'''
+            '''^^ Kana, our player's avatar, is reblited 50 pixels down (Determined by self.speed in Kana.py)'''
           if event.key == pygame.K_UP:
             self.kana.move_up()
-            '''^^ Let's Kana, our player, move up when up arrow is clicked'''
+            '''^^ ^^ Kana, our player's avatar, is reblited 50 pixels up (Determined by self.speed in Kana.py)'''
           if event.key == pygame.K_LEFT:
             self.kana.move_left()
-            '''^^ Let's Kana, our player, move left when left arrow is clicked'''
+            '''^^ Kana, our player's avatar, is reblited 50 pixels left (Determined by self.speed in Kana.py)'''
           if event.key == pygame.K_RIGHT:
             self.kana.move_right()
-            '''^^ Let's Kana, our player, move right when right arrow is clicked'''
+            '''^^ Kana, our player's avatar, is reblited 50 pixels right (Determined by self.speed in Kana.py)'''
           """------------------------------------------------------------------"""
           
       self.render_main() 
+      '''^^Shows '''
       
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
@@ -141,6 +160,8 @@ class Controller:
       ''' ^^ When show_player is True, it makes our player show on the screen.
       And so, when the player moves around the screen, program constantly checks for collision
       between Kana sprite and food sprites'''
+      
+      
       if self.show_friedrice == True:
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
     
