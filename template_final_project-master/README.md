@@ -12,7 +12,7 @@ Rijaa Zaidi & Bianna Chen
 
 ## Project Description
 
-A game where the player is given one in game week to collect recipies to feed their pet cat.
+A game where the player collects food from the map to feed their pet cat.
 
 ***    
 
@@ -31,14 +31,16 @@ A game where the player is given one in game week to collect recipies to feed th
 ### Features
 
 1. Moving Character
-2. NPCS with text
-3. Moving between different areas
-4. Being able to exit the game
+2. Randomly spawning food
+3. Text that explains your objective
+4. colliding with food deletes and internally updates score
 5. Being able to press keys to interact
 
 ### Classes
 
 - << You should have a list of each of your classes with a description >>
+- Kana: The player character, initializes character and includes move methods
+- Food: Creates collectible items, intializes the item with image and random coordinates
 
 ## ATP
 
@@ -48,5 +50,3 @@ A game where the player is given one in game week to collect recipies to feed th
 |  2                   | click count button   | display changes to count = 1      |
 etc...
 
-Hi Bianna :]
-Hey Rijaa :p
