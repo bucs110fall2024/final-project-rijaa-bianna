@@ -54,7 +54,7 @@ class Controller:
     if self.count == 0:
       return(f"Hello there, my name is Kana. Help me collect food to feed my cat. Press space to continue")
     if self.count == 4:
-      return(f"Yippee! You have collected all the foods. Thank you!")
+      return(f"Yippee! You have collected all the foods. Thank you! Press RETURN KEY to pet Tomo the cat.")
   
   def the_textbox(self):
     #textbox
@@ -117,9 +117,9 @@ class Controller:
   '''----------------------------------------------------------------------------------'''
   
   def tomo_interact(self):
-    self.tomo_petted = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
+    self.tomo_petted = pygame.image.load("template_final_project-master/assets/characters/tomoopen-removebg-preview.png")
     self.tomo_rect2 = self.tomo_petted.get_rect()
-    self.screen.blit(self.tomo, self.tomo_rect2)
+    self.screen.blit(self.tomo_petted, self.tomo_rect2)
   
   def mainloop(self):
     #select state loop
@@ -157,7 +157,7 @@ class Controller:
             '''^^ Kana, our player's avatar, is reblited 50 pixels right (Determined by self.speed in Kana.py)'''
           """------------------------------------------------------------------"""
           
-          if event.key == pygame.K_p:
+          if event.key == pygame.K_RETURN:
             self.tomo_pet = True
           
       self.render_main() 
@@ -201,6 +201,7 @@ class Controller:
           self.screen.blit(self.tomo, self.tomo_rect)
           if self.tomo_pet == True:
             self.tomo_interact()
+            pygame.time.delay(1000)
             
           self.kanaimg = pygame.image.load("template_final_project-master/assets/characters/kanaopen-removebg-preview.png")
           self.kana_rect = self.kanaimg.get_rect()
