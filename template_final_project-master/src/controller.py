@@ -187,7 +187,10 @@ class Controller:
         self.the_textbox()
         self.screen.blit(self.box, (0, 0))
         if self.count == 4:
-          self.background = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
+          self.tomo = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
+          self.tomo_rect = self.tomo.get_rect()
+          self.screen.blit(self.tomo, self.tomo_rect)
+          
           #RiJJAA HERERRERE AHHHHHH
           
         
