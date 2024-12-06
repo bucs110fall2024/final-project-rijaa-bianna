@@ -149,7 +149,8 @@ class Controller:
           """------------------------------------------------------------------"""
           
       self.render_main() 
-      '''^^Shows '''
+      '''^^Re-blits the map so that the old image of Kana, the player, doesn't show and only the most recent shows.
+      Gives the illusion that Kana, our player, is moving'''
       
       if self.show_player == True:  
         self.screen.blit(self.kana.img, self.kana.rect)
@@ -161,7 +162,7 @@ class Controller:
       And so, when the player moves around the screen, program constantly checks for collision
       between Kana sprite and food sprites'''
       
-      
+      '''CONTROLS THE VISIBILITY OF THE FOOD, IF THE if statement IS TRUE, THEN SHOW BLITS THE FOOD. IF FALSE THEN IT NO LONGER SHOWS'''
       if self.show_friedrice == True:
         self.screen.blit(self.friedrice.img, self.friedrice.rect)
     
@@ -173,41 +174,10 @@ class Controller:
         
       if self.show_cookie == True:
         self.screen.blit(self.cookie.img, self.cookie.rect)
+      '''--------------------------------------------------------------------------------------------------------------------------------'''
       
       if self.count == 4:
         pass
-    
         
-    
-        
-      pygame.display.flip()
-
-
-     
-      
-  
-  ### below are some sample loop states ###
-
-  def menuloop(self):
-      pass
-      #event loop
-
-      #update data
-
-      #redraw
-      
-  def gameloop(self):
-    pass
-      #event loop
-
-      #update data
-
-      #redraw
-    
-  def gameoverloop(self):
-    pass
-      #event loop
-
-      #update data
-
-      #redraw
+      pygame.display.flip() 
+      '''^^^Displays the surface onto the screen at the very end of the loop'''
