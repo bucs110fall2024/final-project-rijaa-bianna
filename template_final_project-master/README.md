@@ -1,5 +1,5 @@
 
-:warning: Everything between << >> needs to be replaced (remove << >> after replacing)
+
 
 # A Week with Kana
 ## CS110 Final Project  Fall, 2024
@@ -38,7 +38,6 @@ A game where the player collects food from the map to feed their pet cat.
 
 ### Classes
 
-- << You should have a list of each of your classes with a description >>
 - Kana: The player character, initializes character and includes move methods
 - Food: Creates collectible items, intializes the item with image and random coordinates
 
@@ -51,5 +50,5 @@ A game where the player collects food from the map to feed their pet cat.
 |  3                  | using arrow keys, collide with any food object(pizza, fried rice, lassi, cookie)   | food object kana collided with is removed from the screen     |
 |  4                   | collide with and remove all food objects   | a new text box opens which also features images of tomo(cat) and kana      |
 |  5                   | press return key   | tomo opens it's mouth (petting the cat)      |
-etc...
+
 
