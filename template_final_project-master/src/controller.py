@@ -22,6 +22,7 @@ class Controller:
     self.show_pizza = False
     self.show_cookie = False
     self.show_lassi = False
+    self.tomo_pet = False
     '''^^ These are the variables that control what shows on the screen'''
     
     #Put food here
@@ -114,7 +115,12 @@ class Controller:
       arg: self
       return: sprite visiblity and kana-and-food-sprite collision counter goes up by one'''
   '''----------------------------------------------------------------------------------'''
-      
+  
+  def tomo_interact(self):
+    self.tomo_petted = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
+    self.tomo_rect2 = self.tomo_petted.get_rect()
+    self.screen.blit(self.tomo, self.tomo_rect2)
+  
   def mainloop(self):
     #select state loop
     run = True
@@ -150,6 +156,9 @@ class Controller:
             self.kana.move_right()
             '''^^ Kana, our player's avatar, is reblited 50 pixels right (Determined by self.speed in Kana.py)'''
           """------------------------------------------------------------------"""
+          
+          if event.key == pygame.K_p:
+            self.tomo_pet = True
           
       self.render_main() 
       '''^^Re-blits the map so that the old image of Kana, the player, doesn't show and only the most recent shows.
@@ -190,6 +199,8 @@ class Controller:
           self.tomo = pygame.image.load("template_final_project-master/assets/characters/tomo.png")
           self.tomo_rect = self.tomo.get_rect()
           self.screen.blit(self.tomo, self.tomo_rect)
+          if self.tomo_pet == True:
+            self.tomo_interact()
           
           #RiJJAA HERERRERE AHHHHHH
           
